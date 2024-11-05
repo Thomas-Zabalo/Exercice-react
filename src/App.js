@@ -1,22 +1,42 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Person from './components/Person';
+import PersonDetails from './components/PersonDetails';
 
 function App() {
+  const [people, setPeople] = useState([
+    { id: 1, name: 'Alice', age: 30 },
+    { id: 2, name: 'Bob', age: 25 },
+  ]);
+
+  function handleDelete(id) {
+    setPeople(people.filter(person => person.id !== id));
+  }
+
+  function handleModif(id, name) {
+    setPeople(
+      people.map(person =>
+        person.id === id ? { ...person, name: name } : person
+      )
+    )
+  }
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {people.map(person => (
+          <Person
+            key={person.id}
+            nom={person.name}
+            age={person.age}
+            onDelete={() => handleDelete(person.id)}
+            onModif={(name) => handleModif(person.id, name)}
+          />
+        ))}
+
+        <PersonDetails />
       </header>
     </div>
   );
