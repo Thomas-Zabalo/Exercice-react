@@ -10,8 +10,7 @@ function PersonProvider({ children }) {
 
     function addPerson(person) {
         setPeople((prevPeople) => [
-            ...prevPeople,
-            { id: prevPeople.length + 1, ...person },
+            ...prevPeople, { id: prevPeople.length + 1, ...person },
         ]);
     }
 
