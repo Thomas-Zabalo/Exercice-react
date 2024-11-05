@@ -1,23 +1,22 @@
-// pages/PersonDetails.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
 function PersonDetails(props) {
-    const { id } = useParams(); // Get the ID from the URL parameters
-    const personId = parseInt(id); // Convert the ID to an integer
+    const { id } = useParams(); // Get id de l'URL
+    const personId = parseInt(id); 
 
-    const person = props.people.find(p => p.id === personId); // Find the person by ID
+    const person = props.people.find(p => p.id === personId); // Cherche sur l'id
 
     return (
         <div>
-            <h2>Person Details</h2>
+            <h2>Personne Details</h2>
             {person ? (
                 <div>
                     <h3>Name: {person.name}</h3>
-                    <p>Age: {person.age} years old</p>
+                    <p>Age: {person.age} ans</p>
                 </div>
             ) : (
-                <p>Person not found!</p>
+                <p>Aucune personne trouvé!</p>
             )}
         </div>
     );
