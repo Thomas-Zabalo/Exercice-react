@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 function PersonDetails() {
     const [person, setPerson] = useState({
@@ -8,44 +8,55 @@ function PersonDetails() {
         country: 'Portugal'
     });
 
+    function handleChange(event) {
+        const { name, value } = event.target; 
+        setPerson(prevPerson => ({
+            ...prevPerson,
+            [name]: value 
+        }));
+    };
 
     return (
-        <div>PersonDetails
+        <div>
+            <h2>Person Details</h2>
             <div>
                 <input
                     type="text"
+                    name="name" 
                     value={person.name}
                     placeholder="Nouveau nom"
+                    onChange={handleChange} 
                 />
-                <button >Modifier</button>
             </div>
             <div>
                 <input
-                    type="text"
+                    type="number"
+                    name="age" 
                     value={person.age}
-                    placeholder="Nouveau nom"
+                    placeholder="Nouvel âge"
+                    onChange={handleChange} 
                 />
-                <button >Modifier</button>
             </div>
             <div>
                 <input
-                    type="text"
+                    type="email"
+                    name="email"
                     value={person.email}
-                    placeholder="Nouveau nom"
+                    placeholder="Nouvel email"
+                    onChange={handleChange} 
                 />
-                <button >Modifier</button>
             </div>
-
             <div>
                 <input
                     type="text"
+                    name="country"
                     value={person.country}
-                    placeholder="Nouveau nom"
+                    placeholder="Nouvelle ville de résidence"
+                    onChange={handleChange} 
                 />
-                <button >Modifier</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default PersonDetails
+export default PersonDetails;

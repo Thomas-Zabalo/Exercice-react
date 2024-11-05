@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Person from './components/Person';
 import PersonDetails from './components/PersonDetails';
+import PersonInfo from './components/PersonInfo';
 
 function App() {
   const [people, setPeople] = useState([
@@ -37,6 +38,7 @@ function App() {
         ))}
 
         <PersonDetails />
+        <PersonInfo />
       </header>
     </div>
   );
