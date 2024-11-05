@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 
 function PersonInfo() {
-    // const [id, setId] = useState(1);
     const id = 1;
     const [person, setPerson] = useState(null);
 

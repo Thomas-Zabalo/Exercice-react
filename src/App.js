@@ -1,44 +1,38 @@
-import React, { useState } from 'react';
+// App.js
+import React from 'react';
 import './App.css';
-import Person from './components/Person';
-import PersonDetails from './components/PersonDetails';
-import PersonInfo from './components/PersonInfo';
+import Home from './pages/Home';
+import PersonDetails from './pages/PersonDetails';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [people, setPeople] = useState([
+  const people = [
     { id: 1, name: 'Alice', age: 30 },
     { id: 2, name: 'Bob', age: 25 },
-  ]);
-
-  function handleDelete(id) {
-    setPeople(people.filter(person => person.id !== id));
-  }
-
-  function handleModif(id, name) {
-    setPeople(
-      people.map(person =>
-        person.id === id ? { ...person, name: name } : person
-      )
-    )
-  }
-
-
+    { id: 3, name: 'Charlie', age: 35 }
+  ];
 
   return (
+    // <PersonProvider>
+    //   <div className="App">
+    //     <header className="App-header">
+    //       <h1>People Management</h1>
+    //       <AddPerson />
+    //       <PersonList />
+    //     </header>
+    //   </div>
+    // </PersonProvider>
+
+
     <div className="App">
       <header className="App-header">
-        {people.map(person => (
-          <Person
-            key={person.id}
-            nom={person.name}
-            age={person.age}
-            onDelete={() => handleDelete(person.id)}
-            onModif={(name) => handleModif(person.id, name)}
-          />
-        ))}
-
-        <PersonDetails />
-        <PersonInfo />
+        <h1>Navigation</h1>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home people={people} />} />
+            <Route path="/detail/:id" element={<PersonDetails people={people}/>} />
+          </Routes>
+        </BrowserRouter>
       </header>
     </div>
   );
