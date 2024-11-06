@@ -16,7 +16,11 @@ export const deletePerson = (id) => ({
 });
 
 // Créateur d'action pour mettre à jour une personne
-export const updatePerson = (id, updatedPerson) => ({
+export const updatePerson = (id, newName, newAge) => ({
     type: UPDATE_PERSON,
-    payload: { id, updatedPerson },
+    payload: {
+        id,
+        newName,
+        newAge,
+    },
 });
